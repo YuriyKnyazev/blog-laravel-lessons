@@ -25,7 +25,7 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'password'
     ];
 
     /**
@@ -48,6 +48,7 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'role' => UserRoleEnum::class,
         ];
     }
 
@@ -59,7 +60,6 @@ class User extends Authenticatable
             'author_id',
             'reader_id'
         );
-
     }
 
     public function authors(): BelongsToMany
@@ -71,11 +71,10 @@ class User extends Authenticatable
             'author_id',
 
         );
-
     }
 
     public function isAdmin(): bool
     {
-        return $this->role === UserRoleEnum::ADMIN->value;
+        return $this->role->value === UserRoleEnum::ADMIN->value;
     }
 }

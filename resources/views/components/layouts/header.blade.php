@@ -4,7 +4,7 @@
             <li><a href="#"> <span>Call :</span> +7(111)123456789</a></li>
             <li><a href="#"> <span>Write :</span> yourmail@domain.com</a></li>
             @auth()
-                <li><a href="#"> <span>User :</span>{{auth()->user()->name}}</a></li>
+                <li><a href="#"> <span>{{auth()->user()->role->name}} :</span>{{auth()->user()->name}}</a></li>
             @endauth
         </ul>
     </div>
@@ -32,6 +32,11 @@
                     <li>
                         <a href="{{route('posts.create')}}">CREATE POST</a>
                     </li>
+                    @if(auth()->user()->isAdmin())
+                        <li>
+                            <a href="{{route('admin.index')}}">ADMIN PANEL</a>
+                        </li>
+                    @endif
                 @endauth
                 @guest()
                     <li>

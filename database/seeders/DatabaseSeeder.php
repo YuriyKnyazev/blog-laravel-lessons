@@ -17,11 +17,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        User::create([
+        User::query()->create([
             'name' => 'Yuriy',
             'email' => 'admin@admin.com',
             'password' => '12345678',
             'role' => UserRoleEnum::ADMIN->value
+        ]);
+
+        User::query()->create([
+            'name' => 'Yuriy',
+            'email' => 'user@user.com',
+            'password' => '12345678',
+            'role' => UserRoleEnum::USER->value
         ]);
 
         User::factory(10)->create();

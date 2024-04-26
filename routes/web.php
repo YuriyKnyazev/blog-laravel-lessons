@@ -16,9 +16,10 @@ Route::group(['prefix' => 'subscriptions', 'as' => 'subscriptions.'], function (
     Route::delete('/', [Web\SubscriptionController::class, 'destroy'])->name('destroy');
 });
 
-Route::get('admin', [Admin\AdminController::class, 'index'])
-    ->name('admin.index')->middleware('admin', 'auth');
-
+Route::group(['prefix' => 'admin', 'middleware' => ['admin', 'auth'], 'as' => 'admin.'], function () {
+    Route::get('/', [Admin\AdminController::class, 'index'])->name('index');
+    Route::resource('tags', Admin\TagController::class);
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreTagRequest;
-use App\Http\Requests\UpdateTagRequest;
+use App\Http\Requests\Tag\UpdateTagRequest;
 use App\Models\Tag;
 
 class TagController extends Controller
@@ -13,7 +14,8 @@ class TagController extends Controller
      */
     public function index()
     {
-        //
+       $tags = Tag::all();
+       return view('admin.tags.index', compact('tags'));
     }
 
     /**
@@ -45,7 +47,7 @@ class TagController extends Controller
      */
     public function edit(Tag $tag)
     {
-        //
+        return view('admin.tags.edit', compact('tag'));
     }
 
     /**
@@ -53,7 +55,8 @@ class TagController extends Controller
      */
     public function update(UpdateTagRequest $request, Tag $tag)
     {
-        //
+        $tag->update($request->validated());
+        return to_route('admin.tags.index');
     }
 
     /**

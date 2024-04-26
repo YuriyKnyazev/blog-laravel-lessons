@@ -29,7 +29,8 @@
         <ul class="navbar-nav ml-auto">
 
             <li class="nav-item">
-                <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                <a class="nav-link" data-widget="control-sidebar" data-slide="true"
+                   href="" role="button">
                     <i class="fas fa-th-large"></i>
                 </a>
             </li>
@@ -52,13 +53,12 @@
                 <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                     data-accordion="false">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Inactive Page</p>
+                        <a href="{{route('admin.tags.index')}}"
+                           class="nav-link @if(request()->routeIs('admin.tags.index')) active @endif">
+                            <i class="fas fa-list nav-icon"></i>
+                            <p>Tags</p>
                         </a>
                     </li>
-                </ul>
-                </li>
                 </ul>
             </nav>
         </div>

@@ -17,7 +17,7 @@
             <!-- /.card-body -->
         </div>
         <div style="width: 100px">
-            <button type="submin" class="btn btn-block btn-dark">Save</button>
+            <button type="submit" class="btn btn-block btn-dark">Save</button>
         </div>
     </form>
 </x-admin.layout>

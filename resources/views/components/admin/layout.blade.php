@@ -59,6 +59,20 @@
                             <p>Tags</p>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.categories.index')}}"
+                           class="nav-link @if(request()->routeIs('admin.categories.index')) active @endif">
+                            <i class="fas fa-file nav-icon"></i>
+                            <p>Categories</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{route('admin.users.index')}}"
+                           class="nav-link @if(request()->routeIs('admin.users.index')) active @endif">
+                            <i class="fas fa-user nav-icon"></i>
+                            <p>Users</p>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>

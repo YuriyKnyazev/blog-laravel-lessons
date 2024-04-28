@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreTagRequest;
-use App\Http\Requests\Tag\UpdateTagRequest;
+use App\Http\Requests\Tag\StoreRequest;
+use App\Http\Requests\Tag\UpdateRequest;
 use App\Models\Tag;
 
 class TagController extends Controller
@@ -23,23 +23,16 @@ class TagController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.tags.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreTagRequest $request)
+    public function store(StoreRequest $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Tag $tag)
-    {
-        //
+       Tag::create($request->validated());
+        return to_route('admin.tags.index');
     }
 
     /**
@@ -53,7 +46,7 @@ class TagController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateTagRequest $request, Tag $tag)
+    public function update(UpdateRequest $request, Tag $tag)
     {
         $tag->update($request->validated());
         return to_route('admin.tags.index');
@@ -64,6 +57,7 @@ class TagController extends Controller
      */
     public function destroy(Tag $tag)
     {
-        //
+        $tag->delete();
+        return to_route('admin.tags.index');
     }
 }

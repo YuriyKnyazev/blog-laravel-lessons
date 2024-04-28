@@ -1,17 +1,17 @@
-<x-admin.layout title="Tags">
-    <form action="{{route('admin.tags.update', compact('tag'))}}"
+<x-admin.layout title="Categories">
+    <form action="{{route('admin.categories.update', compact('category'))}}"
           method="post"
           class="col-md-6">
         @csrf
         @method('put')
         <div class="card card-dark">
             <div class="card-header">
-                <h3 class="card-title">Edit Tag</h3>
+                <h3 class="card-title">Edit Category</h3>
             </div>
             <div class="card-body">
                 <div class="form-group">
                     <label for="">Name</label>
-                    <input type="text" name="name" value="{{$tag->name}}" class="form-control">
+                    <input type="text" name="name" value="{{$category->name}}" class="form-control">
                 </div>
             </div>
         </div>
@@ -19,4 +19,4 @@
     </form>
 </x-admin.layout>
 
-<x-admin.modals.delete :model="$tag" />
+<x-admin.modals.delete :model="$category" />

@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Requests\Tag;
+namespace App\Http\Requests\Category;
 
 use App\Http\Requests\Common\BaseRequest;
 
-class UpdateTagRequest extends BaseRequest
+class UpdateRequest extends BaseRequest
 {
+
     /**
      * Get the validation rules that apply to the request.
      *

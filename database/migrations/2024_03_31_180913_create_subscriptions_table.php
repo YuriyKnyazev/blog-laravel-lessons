@@ -4,8 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -13,8 +12,14 @@ return new class extends Migration
     {
         Schema::create('subscriptions', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('author_id')->references('id')->on('users');
-            $table->foreignId('reader_id')->references('id')->on('users');
+            $table->foreignId('author_id')
+                ->references('id')
+                ->on('users')
+                ->cascadeOnDelete();
+            $table->foreignId('reader_id')
+                ->references('id')
+                ->on('users')
+                ->cascadeOnDelete();
             $table->unique(['author_id', 'reader_id']);
             $table->timestamps();
         });
